@@ -1,0 +1,15 @@
+version: '2'
+services:
+  client:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    entrypoint: "yarn run start:dev"
+    container_name: app
+    volumes:
+      - /usr/src/app/node_modules
+      - ./public:/usr/src/app/public:ro
+      - ./src:/usr/src/app/src
+    ports:
+      - 3000:3000
